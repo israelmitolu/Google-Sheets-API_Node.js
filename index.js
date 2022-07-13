@@ -55,6 +55,63 @@ app.get("/", async (req, res) => {
     },
   });
 
+  // Updating a specified range in the sheet
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: id,
+    range: "Sheet1!C2",
+    valueInputOption: "USER_ENTERED",
+    resource: {
+      values: [["2. Sophomore"]],
+    },
+  });
+
+  // Delete data from spreadsheet
+  await sheets.spreadsheets.values.clear({
+    spreadsheetId: id,
+    range: "Sheet1!A6:C6",
+  });
+
+  // Update spreadsheet formatting
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId: id,
+    resource: {
+      requests: [
+        {
+          updateBorders: {
+            range: {
+              sheetId: 0,
+              startRowIndex: 0,
+              endRowIndex: 6,
+              startColumnIndex: 0,
+              endColumnIndex: 3,
+            },
+            top: {
+              style: "DASHED",
+              width: 1,
+              color: {
+                red: 1.0,
+              },
+            },
+            bottom: {
+              style: "DASHED",
+              width: 1,
+              color: {
+                red: 1.0,
+              },
+            },
+            innerHorizontal: {
+              style: "DASHED",
+              width: 1,
+              color: {
+                red: 1.0,
+              },
+            },
+          },
+        },
+      ],
+    },
+  });
+
   //Output
   res.send(getRows.data);
 });
