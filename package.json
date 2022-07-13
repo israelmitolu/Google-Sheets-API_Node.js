@@ -1,0 +1,28 @@
+{
+  "name": "google-sheets-api_node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/israelmitolu/Google-Sheets-API_Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/israelmitolu/Google-Sheets-API_Node.js/issues"
+  },
+  "homepage": "https://github.com/israelmitolu/Google-Sheets-API_Node.js#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "googleapis": "^105.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
