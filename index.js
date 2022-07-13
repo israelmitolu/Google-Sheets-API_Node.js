@@ -36,14 +36,25 @@ async function authSheets() {
   };
 }
 
-// Read rows from spreadsheet
 app.get("/", async (req, res) => {
   const { sheets } = await authSheets();
 
+  // Read rows from spreadsheet
   const getRows = await sheets.spreadsheets.values.get({
     spreadsheetId: id,
     range: "Sheet1",
   });
 
+  // Write rows to spreadsheet
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: id,
+    range: "Sheet1",
+    valueInputOption: "USER_ENTERED",
+    resource: {
+      values: [["Gabriella", "Female", "4. Senior"]],
+    },
+  });
+
+  //Output
   res.send(getRows.data);
 });
